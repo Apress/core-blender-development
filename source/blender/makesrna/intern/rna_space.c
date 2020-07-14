@@ -72,6 +72,11 @@ const EnumPropertyItem rna_enum_space_type_items[] = {
      ICON_VIEW3D,
      "3D Viewport",
      "Manipulate objects in a 3D environment"},
+	 {SPACE_TUTORIAL,
+	     "TUTORIAL_EDITOR",
+	     ICON_NONE,
+	     "Tutorial Editor",
+	     ""},
     {SPACE_IMAGE,
      "IMAGE_EDITOR",
      ICON_IMAGE,
@@ -148,6 +153,11 @@ const EnumPropertyItem rna_enum_space_type_items[] = {
      ICON_PREFERENCES,
      "Preferences",
      "Edit persistent configuration settings"},
+	 {SPACE_TUTORIAL,
+	      "TUTORIAL",
+	      ICON_NONE,
+	      "Tutorial",
+	      "Tutorial space type"},
     {0, NULL, 0, NULL, NULL},
 };
 
@@ -561,6 +571,8 @@ static StructRNA *rna_Space_refine(struct PointerRNA *ptr)
       return &RNA_SpacePreferences;
     case SPACE_CLIP:
       return &RNA_SpaceClipEditor;
+    case SPACE_TUTORIAL:
+    	return &RNA_SpaceTutorialEditor;
     default:
       return &RNA_Space;
   }
@@ -5021,6 +5033,16 @@ static void rna_def_space_dopesheet(BlenderRNA *brna)
   RNA_def_property_update(prop, NC_SPACE | ND_SPACE_TIME, NULL);
 }
 
+static void rna_def_space_tutorial(BlenderRNA *brna)
+{
+  StructRNA *srna;
+  PropertyRNA *prop;
+  
+  srna = RNA_def_struct(brna, "SpaceTutorialEditor", "Space");
+  RNA_def_struct_sdna(srna, "SpaceTutorial");
+  RNA_def_struct_ui_text(srna, "Space Tutorial Editor", "Tutorial editor space data");
+}
+
 static void rna_def_space_graph(BlenderRNA *brna)
 {
   StructRNA *srna;
@@ -6460,6 +6482,7 @@ void RNA_def_space(BlenderRNA *brna)
   rna_def_node_tree_path(brna);
   rna_def_space_node(brna);
   rna_def_space_clip(brna);
+  rna_def_space_tutorial(brna);
 }
 
 #endif

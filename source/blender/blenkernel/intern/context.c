@@ -912,6 +912,15 @@ struct SpaceTopBar *CTX_wm_space_topbar(const bContext *C)
   return NULL;
 }
 
+struct SpaceTutorial *CTX_wm_space_tutorial(const bContext *C)
+{
+  ScrArea *sa = CTX_wm_area(C);
+  if (sa && sa->spacetype == SPACE_TUTORIAL) {
+    return sa->spacedata.first;
+  }
+  return NULL;
+}
+
 void CTX_wm_manager_set(bContext *C, wmWindowManager *wm)
 {
   C->wm.manager = wm;

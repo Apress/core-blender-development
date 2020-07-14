@@ -1673,6 +1673,26 @@ typedef struct SpaceStatusBar {
   /* End 'SpaceLink' header. */
 } SpaceStatusBar;
 
+
+/* -------------------------------------------------------------------- */
+/** \name Space Tutorial
+ * \{ */
+
+/* These two lines with # tell makesdna this struct can be excluded.
+ * Should be: #ifndef WITH_GLOBAL_AREA_WRITING */
+#
+#
+/* SpaceTutorial */
+typedef struct SpaceTutorial {
+  SpaceLink *next, *prev;
+  /** Storage of regions for inactive spaces. */
+  ListBase regionbase;
+  char spacetype;
+  int color;
+  char _pad0[6];
+  /* End 'SpaceLink' header. */
+} SpaceTutorial;
+
 /** \} */
 
 /* -------------------------------------------------------------------- */
@@ -1713,7 +1733,9 @@ typedef enum eSpace_Type {
   SPACE_TOPBAR = 21,
   SPACE_STATUSBAR = 22,
 
-  SPACE_TYPE_LAST = SPACE_STATUSBAR,
+  SPACE_TUTORIAL = 23,
+
+  SPACE_TYPE_LAST = SPACE_TUTORIAL,
 } eSpace_Type;
 
 /* use for function args */

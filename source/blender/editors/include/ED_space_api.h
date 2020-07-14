@@ -53,6 +53,8 @@ void ED_spacetype_clip(void);
 void ED_spacetype_statusbar(void);
 void ED_spacetype_topbar(void);
 
+void ED_spacetype_tutorial(void);
+
 /* calls for instancing and freeing spacetype static data
  * called in WM_init_exit */
 /* in space_file.c */

@@ -61,6 +61,7 @@ if(WITH_BLENDER)
   add_subdirectory(util)
   add_subdirectory(uvedit)
   add_subdirectory(screen)
+  add_subdirectory(space_tutorial)
 endif()
 
 add_subdirectory(datafiles)

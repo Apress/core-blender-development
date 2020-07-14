@@ -174,6 +174,8 @@ struct SpaceUserPref *CTX_wm_space_userpref(const bContext *C);
 struct SpaceClip *CTX_wm_space_clip(const bContext *C);
 struct SpaceTopBar *CTX_wm_space_topbar(const bContext *C);
 
+struct SpaceTutorial *CTX_wm_space_tutorial(const bContext *C);
+
 void CTX_wm_manager_set(bContext *C, struct wmWindowManager *wm);
 void CTX_wm_window_set(bContext *C, struct wmWindow *win);
 void CTX_wm_screen_set(bContext *C, struct bScreen *screen); /* to be removed */
