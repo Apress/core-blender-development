@@ -26,10 +26,8 @@
  ** Here, we use GHOST to show similarities between those
  ** framework APIs and GHOST.
  **
- ** This "new" code has been shoehorned into the gears.c
- ** code from the Blender codebase (which itself was
- ** adapted from a Qt example). Simplification of gears.c to
- **  allow this has also been made.
+ ** This "new" code has been shoehorned into gears.c.
+ ** Simplification of gears.c has also been made.
  **
  ** OpenGL "Red Book" GitHub URL for 01-triangles example in GLFW:
  ** https://github.com/openglredbook/examples/blob/master/src/01-triangles/01-triangles.cpp
@@ -260,35 +258,35 @@ int processEvent(GHOST_EventHandle hEvent, GHOST_TUserDataPtr userData)
     GHOST_WindowHandle window = GHOST_GetEventWindow(hEvent);
 
     switch (GHOST_GetEventType(hEvent)) {
-		case GHOST_kEventWindowClose: {
-			GHOST_WindowHandle window = GHOST_GetEventWindow(hEvent);
-			if (window == sMainWindow) {
-				sExitRequested = 1;
-			}
-		}
-		break;
+    case GHOST_kEventWindowClose: {
+        GHOST_WindowHandle window = GHOST_GetEventWindow(hEvent);
+        if (window == sMainWindow) {
+            sExitRequested = 1;
+        }
+    }
+    break;
 
-		case GHOST_kEventWindowActivate:
-			handled = 0;
-			break;
+    case GHOST_kEventWindowActivate:
+        handled = 0;
+        break;
 
-		case GHOST_kEventWindowDeactivate:
-			handled = 0;
-			break;
+    case GHOST_kEventWindowDeactivate:
+        handled = 0;
+        break;
 
-		case GHOST_kEventWindowUpdate: {
-			GHOST_WindowHandle window = GHOST_GetEventWindow(hEvent);
-			if (!GHOST_ValidWindow(shSystem, window))
-				break;
-			setViewPortGL(window);
-			display();
-			GHOST_SwapWindowBuffers(window);
-		}
-		break;
+    case GHOST_kEventWindowUpdate: {
+        GHOST_WindowHandle window = GHOST_GetEventWindow(hEvent);
+        if (!GHOST_ValidWindow(shSystem, window))
+            break;
+        setViewPortGL(window);
+        display();
+        GHOST_SwapWindowBuffers(window);
+    }
+    break;
 
-		default:
-			handled = 0;
-			break;
+    default:
+        handled = 0;
+        break;
     }
 
     return handled;
